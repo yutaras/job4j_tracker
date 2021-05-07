@@ -21,12 +21,11 @@ public class Tracker {
                 size++;
             }
         }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-        return itemsWithoutNull;
+        return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
-        Item[] itemsWitSameName = new Item[items.length];
+        Item[] itemsWitSameName = new Item[size];
         for (int index = 0; index < size; index++) {
             Item item = items[index];
             if (key.equals(item.getName())) {
@@ -34,8 +33,7 @@ public class Tracker {
                 size++;
             }
         }
-        itemsWitSameName = Arrays.copyOf(itemsWitSameName, size);
-        return itemsWitSameName;
+        return Arrays.copyOf(items, size);
     }
 
     public Item findById(int id) {
