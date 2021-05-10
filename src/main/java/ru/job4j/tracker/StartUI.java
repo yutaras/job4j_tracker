@@ -24,13 +24,11 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit item ====");
-                //Scanner scanner1 = new Scanner(System.in);
                 System.out.print("Enter the ID of the required item: ");
-                int id = scanner.nextInt();
+                int id = Integer.parseInt(scanner.nextLine());
                 System.out.print("Enter a new name for the item: ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(name);
-                tracker.replace(id, newItem);
                 if (tracker.replace(id, newItem)) {
                     System.out.println("Successfully completed");
                 } else {
@@ -38,20 +36,17 @@ public class StartUI {
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
-                //Scanner scanner1 = new Scanner(System.in);
                 System.out.print("Enter the ID of the deleted item: ");
-                int id = scanner.nextInt();
+                int id = Integer.parseInt(scanner.nextLine());
                 if (tracker.delete(id)) {
-                    tracker.delete(id);
                     System.out.println("Successfully completed");
                 } else {
                     System.out.println("Error. Check the correctness of the entered values");
                 }
             } else if (select == 4) {
                 System.out.println("=== Find item by Id ====");
-                //Scanner scanner1 = new Scanner(System.in);
                 System.out.print("Enter the ID of the item: ");
-                int id = scanner.nextInt();
+                int id = Integer.parseInt(scanner.nextLine());
                 Item rsl = tracker.findById(id);
                 if (rsl != null) {
                     System.out.println(rsl);
