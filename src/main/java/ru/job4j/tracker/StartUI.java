@@ -19,14 +19,14 @@ public class StartUI {
             } else if (select == 1) {
                 System.out.println("=== List of all items ====");
                 Item[] arr = tracker.findAll();
-                for (int i = 0; i < arr.length; i++) {
-                    System.out.println(arr[i]);
+                for (Item item : arr) {
+                    System.out.println(item);
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit item ====");
-                Scanner scanner1 = new Scanner(System.in);
+                //Scanner scanner1 = new Scanner(System.in);
                 System.out.print("Enter the ID of the required item: ");
-                int id = scanner1.nextInt();
+                int id = scanner.nextInt();
                 System.out.print("Enter a new name for the item: ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(name);
@@ -38,9 +38,9 @@ public class StartUI {
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
-                Scanner scanner1 = new Scanner(System.in);
+                //Scanner scanner1 = new Scanner(System.in);
                 System.out.print("Enter the ID of the deleted item: ");
-                int id = scanner1.nextInt();
+                int id = scanner.nextInt();
                 if (tracker.delete(id)) {
                     tracker.delete(id);
                     System.out.println("Successfully completed");
@@ -49,9 +49,9 @@ public class StartUI {
                 }
             } else if (select == 4) {
                 System.out.println("=== Find item by Id ====");
-                Scanner scanner1 = new Scanner(System.in);
+                //Scanner scanner1 = new Scanner(System.in);
                 System.out.print("Enter the ID of the item: ");
-                int id = scanner1.nextInt();
+                int id = scanner.nextInt();
                 Item rsl = tracker.findById(id);
                 if (rsl != null) {
                     System.out.println(rsl);
@@ -64,8 +64,8 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item[] rsl = tracker.findByName(name);
                 if (rsl.length > 0) {
-                    for (int i = 0; i < rsl.length; i++) {
-                        System.out.println(rsl[i]);
+                    for (Item item : rsl) {
+                        System.out.println(item);
                     }
                 } else {
                     System.out.println("Error. Item with the name not found");
