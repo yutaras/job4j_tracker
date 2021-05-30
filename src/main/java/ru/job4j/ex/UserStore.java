@@ -19,10 +19,10 @@ public class UserStore {
 
     public static void main(String[] args) {
         User[] users = {
-                new User("Ma", true)
+                new User("Maxim", true)
         };
         try {
-            User user = findUser(users, "Ma");
+            User user = findUser(users, "Max");
             if (validate(user)) {
                 System.out.println("This user has an access");
             }
