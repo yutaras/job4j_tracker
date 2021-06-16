@@ -5,39 +5,36 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Tracker {
-    //private final Item[] items = new Item[100];
     private List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
 
     public Item add(Item item) {
         item.setId(ids++);
-        //items[size++] = item;
         items.add(item);
         return item;
     }
 
-    public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+    public List<Item> findAll() {
+        return items;
     }
 
-    public Item[] findByName(String key) {
-        Item[] itemsWitSameName = new Item[size];
+    public List<Item> findByName(String key) {
+        List<Item> itemsWitSameName = new ArrayList<>();
         int count = 0;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < items.size(); index++) {
             //Item item = items[index];
             Item item = items.get(index);
             if (key.equals(item.getName())) {
-                itemsWitSameName[count] = items.get(index);
+                itemsWitSameName.set(count, items.get(index));
                 count++;
             }
         }
-        return Arrays.copyOf(itemsWitSameName, count);
+        return items;
     }
 
     private int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
@@ -47,9 +44,7 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        /* Находим индекс */
         int index = indexOf(id);
-        /* Если индекс найден возвращаем item, иначе null */
         return index != -1 ? items.get(index) : null;
     }
 
@@ -57,8 +52,8 @@ public class Tracker {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
-            item.setId(id);
-            items.get(index) = item;
+            //item.setId(id);
+            items.set(index, item);
         }
         return rsl;
     }
@@ -67,9 +62,7 @@ public class Tracker {
         boolean rsl = false;
         int index = indexOf(id);
         if (index != -1) {
-            System.arraycopy(items, index + 1, items, index, size - index - 1);
-            items[size - 1] = null;
-            size--;
+            items.remove(index);
             rsl = true;
         }
         return rsl;
