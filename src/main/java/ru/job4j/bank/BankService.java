@@ -13,27 +13,36 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        if (findByPassport(passport) != null) {
-            List<Account> accounts = users.get(findByPassport(passport));
-            if (accounts.size() == 0) {
-                accounts.add(account);
-            } else if (!accounts.contains(account)) {
-                accounts.add(account);
-            }
+        User user = findByPassport(passport);
+        List<Account> accounts = users.get(user);
+        if ((user != null) && (!accounts.contains(account))) {
+            accounts.add(account);
         }
     }
 
     public User findByPassport(String passport) {
+        User rsl = null;
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
-                return user;
+                rsl = user;
+                break;
             }
         }
-        return null;
+        return rsl;
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        return null;
+        Account rsl = null;
+        User user = findByPassport(passport);
+        if (user != null) {
+            for (Account account : users.get(user)) {
+                if (account.getRequisite().equals(requisite)) {
+                    rsl = account;
+                }
+                break;
+            }
+        }
+        return rsl;
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
