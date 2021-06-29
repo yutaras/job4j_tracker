@@ -16,5 +16,7 @@ public class ItemSorter {
         System.out.println(items);
         Collections.sort(items, new SortName());
         System.out.println(items);
+        Collections.sort(items, new SortNameDecrease());
+        System.out.println(items);
     }
 }
