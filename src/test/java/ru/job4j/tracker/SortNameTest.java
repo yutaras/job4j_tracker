@@ -17,7 +17,12 @@ public class SortNameTest {
                 new Item(2, "Ватрушка"),
                 new Item(4, "Ананас")
         );
+        List<Item> expected = Arrays.asList(
+                new Item(4, "Ананас"),
+                new Item(5, "Бублик"),
+                new Item(2, "Ватрушка")
+        );
         Collections.sort(items, new SortName());
-        assertThat(items.get(0).getName(), is("Ананас"));
+        assertThat(items, is(expected));
     }
 }
