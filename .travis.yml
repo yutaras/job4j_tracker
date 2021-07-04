@@ -18,3 +18,8 @@ notifications:
       - maxjeff@mail.ru
     on_success: never # default: change
     on_failure: always # default: always
+env:
+
+  global:
+
+    - CODECOV_TOKEN="f21c0e3b-af32-4e94-bbab-76ebd349ea26"
