@@ -20,14 +20,15 @@ public class FunctionalInterfaces {
         System.out.println(map);
         BiPredicate<Integer, String> biPred = (integer, s) -> integer % 2 == 0 || s.length() == 4;
         for (Integer i : map.keySet()) {
-            if (biPred.test(4, "three")) {
+            if (biPred.test(i, map.get(i))) {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
         Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
-        Consumer<List<String>> con = (s) -> System.out.println(s);
-        con.accept(sup.get());
+        Consumer<String> con = (s) -> System.out.println(s);
         Function<String, String> func = s -> s.toUpperCase();
-        System.out.println(func.apply("second"));
+        for (String s : sup.get()) {
+            con.accept(func.apply(s));
+        }
     }
 }
