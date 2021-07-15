@@ -29,11 +29,12 @@ public class PhoneDictionary {
         }
             return result;
         }*/
-
     public ArrayList<Person> find(String key) {
-        Predicate<Person> combine = value -> value.getName().contains(key)
-                || value.getSurname().contains(key) || value.getPhone().contains(key)
-                || value.getAddress().contains(key);
+        Predicate<Person> pr1 = value -> value.getName().contains(key);
+        Predicate<Person> pr2 = value -> value.getSurname().contains(key);
+        Predicate<Person> pr3 = value -> value.getPhone().contains(key);
+        Predicate<Person> pr4 = value -> value.getAddress().contains(key);
+        Predicate<Person> combine = pr1.or(pr2).or(pr3).or(pr4);
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
             if (combine.test(person)) {
