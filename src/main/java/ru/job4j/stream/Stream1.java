@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Stream {
+public class Stream1 {
     public static void main(String[] args) {
         ArrayList<Integer> arr = new ArrayList<>();
         arr.add(6);
