@@ -42,9 +42,16 @@ public class BankService {
     /**
      * Метод ищет пользователя по номеру паспорта
      * @param passport паспорт пользователя
-     * @return возвращает пользователя или null, если он е найден
+     * @return возвращает пользователя или null, если он не найден
      */
     public User findByPassport(String passport) {
+        return users.keySet()
+                .stream()
+                .filter(s -> s.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
+    }
+    /*public User findByPassport(String passport) {
         User rsl = null;
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
@@ -53,7 +60,7 @@ public class BankService {
             }
         }
         return rsl;
-    }
+    }*/
 
     /**
      * Этот метод ищет счет пользователя по реквизитам. Сначала находим пользователя.
@@ -63,6 +70,17 @@ public class BankService {
      * @return возвращает счет пользователя или null, если счет не найден
      */
     public Account findByRequisite(String passport, String requisite) {
+        User a = findByPassport(passport);
+        if (a != null) {
+            return users.get(a)
+                    .stream()
+                    .filter(s -> s.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
+    }
+    /*public Account findByRequisite(String passport, String requisite) {
         Account rsl = null;
         User user = findByPassport(passport);
         if (user != null) {
@@ -74,7 +92,7 @@ public class BankService {
             }
         }
         return rsl;
-    }
+    }*/
 
     /**
      * Метод для перечисления денег с одного счёта на другой счёт.
