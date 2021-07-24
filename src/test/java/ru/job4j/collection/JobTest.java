@@ -34,12 +34,12 @@ public class JobTest {
 
     @Test
     public void jobByName() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
         );
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2),
                 new Job("Reboot server", 1)
@@ -50,12 +50,12 @@ public class JobTest {
 
     @Test
     public void jobDescByName() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
         );
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Reboot server", 1),
                 new Job("Impl task", 2),
                 new Job("Fix bugs", 4)
@@ -66,12 +66,12 @@ public class JobTest {
 
     @Test
     public void jobByPriority() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
         );
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Reboot server", 1),
                 new Job("Impl task", 2),
                 new Job("Fix bugs", 4)
@@ -82,12 +82,12 @@ public class JobTest {
 
     @Test
     public void jobDescByPriority() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
         );
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2),
                 new Job("Reboot server", 1)
