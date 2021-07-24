@@ -12,18 +12,18 @@ public class BankServiceTest {
 
     @Test
     public void addUser() {
-        Optional<User> user = Optional.of(new User("3434", "Petr Arsentev"));
+        User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();
-        bank.addUser(user.get());
-        assertThat(bank.findByPassport("3434"), is(user));
+        bank.addUser(user);
+        assertThat(bank.findByPassport("3434").get(), is(user));
     }
 
     @Test
     public void whenEnterInvalidPassport() {
-        Optional<User> user = Optional.of(new User("3434", "Petr Arsentev"));
+        User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();
-        bank.addUser(user.get());
-        bank.addAccount(user.get().getPassport(), new Account("5546", 150D));
+        bank.addUser(user);
+        bank.addAccount(user.getPassport(), new Account("5546", 150D));
         assertThat(bank.findByRequisite("34", "5546"), is(Optional.empty()));
     }
 
