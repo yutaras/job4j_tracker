@@ -34,7 +34,7 @@ public class JobTest {
 
     @Test
     public void jobByName() {
-        List<Job> jobs = List.of(
+        List<Job> jobs = Arrays.asList(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
@@ -50,7 +50,7 @@ public class JobTest {
 
     @Test
     public void jobDescByName() {
-        List<Job> jobs = List.of(
+        List<Job> jobs = Arrays.asList(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
@@ -66,7 +66,7 @@ public class JobTest {
 
     @Test
     public void jobByPriority() {
-        List<Job> jobs = List.of(
+        List<Job> jobs = Arrays.asList(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
@@ -82,7 +82,7 @@ public class JobTest {
 
     @Test
     public void jobDescByPriority() {
-        List<Job> jobs = List.of(
+        List<Job> jobs = Arrays.asList(
                 new Job("Reboot server", 1),
                 new Job("Fix bugs", 4),
                 new Job("Impl task", 2)
