@@ -10,14 +10,6 @@ public class Doctor {
     private boolean experience;
     private String gender;
 
-    @Override
-    public String toString() {
-        return "Doctor{" + "name='" + name + '\'' + ", surname='" + surname + '\''
-                + ", age=" + age + ", speciality='" + speciality + '\''
-                + ", qualification='" + qualification + '\''
-                + ", experience=" + experience + ", gender='" + gender + '\'' + '}';
-    }
-
     static class Builder {
         private String name;
         private String surname;
@@ -85,5 +77,13 @@ public class Doctor {
                 .buildGender("мужской")
                 .build();
         System.out.println(doctor);
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" + "name='" + name + '\'' + ", surname='" + surname + '\''
+                + ", age=" + age + ", speciality='" + speciality + '\''
+                + ", qualification='" + qualification + '\''
+                + ", experience=" + experience + ", gender='" + gender + '\'' + '}';
     }
 }
