@@ -16,7 +16,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         UserAction[] actions = {
                 new CreateAction(output),
                 new ExitProgramAction()
@@ -28,7 +28,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Replaced item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
@@ -47,7 +47,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Deleted item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
@@ -68,7 +68,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         UserAction[] actions = {
                 new ExitProgramAction()
         };
@@ -81,7 +81,7 @@ public class StartUITest {
     @Test
     public void whenFindAll() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("item1"));
         Input in = new StubInput(
                 new String[]{"0", "1"}
@@ -106,7 +106,7 @@ public class StartUITest {
     @Test
     public void whenFindItemById() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("item1"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
@@ -132,7 +132,7 @@ public class StartUITest {
     @Test
     public void whenFindItemByName() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("item1"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
@@ -161,7 +161,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"7", "0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         UserAction[] actions = new UserAction[]{
                 new ExitProgramAction()
         };
