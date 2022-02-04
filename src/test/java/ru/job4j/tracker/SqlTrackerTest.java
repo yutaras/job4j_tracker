@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -55,20 +56,16 @@ public class SqlTrackerTest {
     @Test
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
-        assertThat(tracker.findById(item.getId()), is(item));
+        Item item1 = tracker.add(new Item("item1"));
+        assertThat(tracker.findById(item1.getId()), is(item1));
     }
 
     @Test
     public void whenReplace() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item bug = new Item();
-        bug.setName("Bug");
-        tracker.add(bug);
+        Item bug = tracker.add(new Item("Bug"));
         int id = bug.getId();
-        Item bugWithDesc = new Item();
-        bugWithDesc.setName("Bug with description");
+        Item bugWithDesc = new Item("Bug with description");
         tracker.replace(id, bugWithDesc);
         assertThat(tracker.findById(id).getName(), is("Bug with description"));
     }
@@ -76,11 +73,29 @@ public class SqlTrackerTest {
     @Test
     public void whenDelete() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item bug = new Item();
-        bug.setName("Bug");
-        tracker.add(bug);
+        Item bug = tracker.add(new Item("Bug"));
         int id = bug.getId();
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
+    }
+
+    @Test
+    public void findByName() {
+        SqlTracker tracker = new SqlTracker(connection);
+        List<Item> expected = new ArrayList<>();
+        Item item1 = tracker.add(new Item("item1"));
+        expected.add(item1);
+        assertThat(tracker.findByName("item1"), is(expected));
+    }
+
+    @Test
+    public void findAll() {
+        SqlTracker tracker = new SqlTracker(connection);
+        List<Item> expected = new ArrayList<>();
+        Item item1 = tracker.add(new Item("item1"));
+        Item item2 = tracker.add(new Item("item2"));
+        expected.add(item1);
+        expected.add(item2);
+        assertThat(tracker.findAll(), is(expected));
     }
 }
