@@ -34,6 +34,23 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
+        try (SqlTracker tracker = new SqlTracker()) {
+            tracker.init();
+            UserAction[] actions = {
+                    new CreateAction(output),
+                    new FindAllAction(output),
+                    new ReplaceAction(output),
+                    new DeleteAction(output),
+                    new FindItemByIdAction(output),
+                    new FindItemByNameAction(output),
+                    new ExitProgramAction()
+            };
+            new StartUI(output).init(input, tracker, Arrays.asList(actions));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*Output output = new ConsoleOutput();
+        Input input = new ValidateInput(output, new ConsoleInput());
         SqlTracker tracker = new SqlTracker();
         UserAction[] actions = {
                 new CreateAction(output),
@@ -44,6 +61,6 @@ public class StartUI {
                 new FindItemByNameAction(output),
                 new ExitProgramAction()
         };
-        new StartUI(output).init(input, tracker, Arrays.asList(actions));
+        new StartUI(output).init(input, tracker, Arrays.asList(actions));*/
     }
 }
