@@ -82,20 +82,15 @@ public class SqlTrackerTest {
     @Test
     public void findByName() {
         SqlTracker tracker = new SqlTracker(connection);
-        List<Item> expected = new ArrayList<>();
         Item item1 = tracker.add(new Item("item1"));
-        expected.add(item1);
-        assertThat(tracker.findByName("item1"), is(expected));
+        assertThat(tracker.findByName("item1"), is(List.of(item1)));
     }
 
     @Test
     public void findAll() {
         SqlTracker tracker = new SqlTracker(connection);
-        List<Item> expected = new ArrayList<>();
         Item item1 = tracker.add(new Item("item1"));
         Item item2 = tracker.add(new Item("item2"));
-        expected.add(item1);
-        expected.add(item2);
-        assertThat(tracker.findAll(), is(expected));
+        assertThat(tracker.findAll(), is(List.of(item1, item2)));
     }
 }
