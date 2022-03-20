@@ -55,7 +55,8 @@ public class StartUI {
         MemTracker tracker = new MemTracker();
         UserAction[] actions = {
                 new CreateAction(output),
-                new CreateActionRepeat(output),
+                new CreateManyItemsAction(output),
+                new DeleteManyAction(output),
                 new FindAllAction(output),
                 new ReplaceAction(output),
                 new DeleteAction(output),
