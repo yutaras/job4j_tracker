@@ -3,6 +3,7 @@ package ru.job4j.stream;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+/*делал задачу ранее*/
 public class Card {
     private Suit suit;
     private Value value;
